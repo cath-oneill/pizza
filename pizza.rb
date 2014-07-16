@@ -3,7 +3,7 @@ class Pizza
 
   def initialize(toppings=[Topping.new("cheese")], now=Time.now)
     @toppings = toppings
-    @expected_delivery_time = now + 30*60
+    @expected_delivery_time = (now + 30*60).to_i
     @actual_delivery_time
   end
 
