@@ -1,14 +1,15 @@
 class Pizza
   attr_reader :toppings, :expected_delivery_time, :actual_delivery_time
 
-  def initialize(toppings=[Topping.new("cheese")], now=Time.now)
+  def initialize(toppings=nil, now=Time.now)
     @toppings = toppings
     @expected_delivery_time = (now + 30*60).to_i
     @actual_delivery_time
+    @toppings = [Topping.new("cheese", vegetarian: true)] if @toppings.nil?
   end
 
   def vegetarian?
-    self.toppings.all?{|each_topping| each_topping.vegetarian}
+    @toppings.all?{|each_topping| each_topping.vegetarian}
   end
 
   def add_topping(topping)

@@ -55,9 +55,10 @@ describe Pizza do
     it 'adds a new topping to a pizza' do
       pizza = Pizza.new
       expect(pizza.toppings.size).to eq(1)
-
-      pizza.add_topping(Topping.new('salami'))
+      salami = Topping.new('salami')
+      pizza.add_topping(salami)
       expect(pizza.toppings.size).to eq(2)
+      expect(pizza.toppings.include?(salami))
     end
   end
 
