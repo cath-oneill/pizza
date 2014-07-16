@@ -58,7 +58,28 @@ describe Pizza do
 
       pizza.add_topping(Topping.new('salami'))
       expect(pizza.toppings.size).to eq(2)
+    end
+  end
 
+  describe 'deliver!' do
+    it 'marks the time the pizza was delivered' do
+      pizza = Pizza.new
+      pizza.deliver!(628232400)
+      expect(pizza.actual_delivery_time).to eq(628232400)
+    end    
+  end
+
+  describe 'late?' do
+    it 'returns true if the pizza is late' do
+      pizza = Pizza.new([Topping.new("pepperoni")], 628232400)
+      pizza.deliver!
+      expect(pizza.late?).to be true
+    end
+
+    it 'returns false if the pizza is on time' do
+      pizza = Pizza.new([Topping.new("pepperoni")], 628232400)
+      pizza.deliver!(628232400 + 29*30)
+      expect(pizza.late?).to be false
     end
 
   end
