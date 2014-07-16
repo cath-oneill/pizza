@@ -29,7 +29,7 @@ describe Pizza do
     end
   end
 
-  describe 'vegetarian?' do
+  describe '#vegetarian?' do
     it 'returns true if all toppings are veggie' do
       toppings = [
         Topping.new('mushrooms', vegetarian: true),
@@ -51,7 +51,7 @@ describe Pizza do
     end
   end
 
-  describe 'add_topping' do
+  describe '#add_topping' do
     it 'adds a new topping to a pizza' do
       pizza = Pizza.new
       expect(pizza.toppings.size).to eq(1)
@@ -61,7 +61,7 @@ describe Pizza do
     end
   end
 
-  describe 'deliver!' do
+  describe '#deliver!' do
     it 'marks the time the pizza was delivered' do
       pizza = Pizza.new
       pizza.deliver!(628232400)
@@ -69,7 +69,7 @@ describe Pizza do
     end    
   end
 
-  describe 'late?' do
+  describe '#late?' do
     it 'returns true if the pizza is late' do
       pizza = Pizza.new([Topping.new("pepperoni")], 628232400)
       pizza.deliver!
