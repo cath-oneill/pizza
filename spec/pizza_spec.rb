@@ -22,6 +22,11 @@ describe Pizza do
       expect(pizza.toppings.size).to eq(1)
       expect(pizza.toppings.first.name).to eq('cheese')
     end
+
+    it 'creates a time of delivery in 30 minutes' do
+      pizza = Pizza.new([Topping.new("pepperoni")], 628232400)
+      expect(pizza.expected_delivery_time).to eq(628232400 + 30*60)
+    end
   end
 
   describe 'vegetarian?' do
@@ -45,6 +50,19 @@ describe Pizza do
       expect(pizza.vegetarian?).to be false
     end
   end
+
+  describe 'add_topping' do
+    it 'adds a new topping to a pizza' do
+      pizza = Pizza.new
+      expect(pizza.toppings.size).to eq(1)
+
+      pizza.add_topping(Topping.new('salami'))
+      expect(pizza.toppings.size).to eq(2)
+
+    end
+
+  end
+
 end
 
 describe Topping do
